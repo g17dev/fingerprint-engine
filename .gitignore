@@ -1,0 +1,12 @@
+/target/
+**/*.rs.bk
+*.pdb
+*.exe
+*.dylib
+*.so
+*.a
+Cargo.lock
+.DS_Store
+/protos/*.rs
+/libs/*.a
+/scripts/*.log

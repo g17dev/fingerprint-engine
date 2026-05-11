@@ -1,0 +1,29 @@
+# crates/fp-usb/Cargo.toml
+#
+# CONCEPTO: Este crate es una *librería* (no tiene main.rs).
+# Solo expone tipos y funciones para que otros crates los usen.
+# La directiva [lib] es implícita si tienes src/lib.rs.
+
+[package]
+name = "fp-usb"
+version = "0.1.0"
+edition = "2021"   # edición de Rust — siempre usa 2021
+
+[dependencies]
+# { workspace = true } significa: usa la versión definida en el workspace root
+tokio       = { workspace = true }
+async-trait = { workspace = true }
+thiserror   = { workspace = true }
+tracing     = { workspace = true }
+nusb        = { workspace = true }
+aes         = { workspace = true }
+cbc         = { workspace = true }
+
+# Crates específicos de este módulo (no están en workspace porque solo
+# fp-usb los necesita)
+
+# Para operaciones de cifrado adicionales
+cipher = "0.4"    # traits base de cifrado que usan aes y cbc
+
+# Para convertir bytes a tipos concretos de forma segura
+byteorder = "1"

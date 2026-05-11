@@ -1,0 +1,15 @@
+[workspace]
+members = [
+    "crates/fp-usb",
+]
+resolver = "2"
+
+[workspace.dependencies]
+tokio       = { version = "1", features = ["full"] }
+async-trait = "0.1"
+thiserror   = "1"
+tracing     = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+nusb        = "0.1"
+aes         = "0.8"
+cbc         = "0.1"
