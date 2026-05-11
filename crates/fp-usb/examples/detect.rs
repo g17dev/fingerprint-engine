@@ -1,4 +1,3 @@
-use fp_usb::driver::SensorInfo;
 use fp_usb::registry;
 use fp_usb::devices::uru4000::Uru4000;
 use fp_usb::driver::FingerprintDevice;
@@ -16,6 +15,16 @@ async fn main() {
                     sensor.init().await;
                     let info = sensor.sensor_info();
                     println!("{:?}", info);
+                    match sensor.set_led(true).await {
+                        Ok(_) => println!("LED encendido"),
+                        Err(e) => println!("Error LED: {}", e),
+                    }
+                    tokio::time::sleep(std::time::Duration::from_secs(3)).await;
+                    match sensor.set_led(false).await {
+                        Ok(_) => println!("LED apagado"),
+                        Err(e) => println!("Error apagando LED: {}", e),
+                    }
+                    
                 }
                 Err(e) => {
                     println!("Error: {}", e);
